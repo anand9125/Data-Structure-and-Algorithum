@@ -1,0 +1,131 @@
+{
+    public static void print(int[] arr) {
+        for (int ele : arr) {
+            System.out.print(ele + " ");
+        }
+        System.out.println();
+    }
+
+    public static void sweap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static int partion(int[] arr, int lo, int hi){
+        int pivot = arr[lo];
+        int smallerCount = 0;
+        for (int i = lo + 1; i <= hi; i++) {
+            if(i== lo) continue;
+            if (arr[i] <=pivot) {
+                smallerCount++;
+            }}
+            int corectIdx = lo + smallerCount;
+            sweap(arr,lo, corectIdx);
+      //  System.out.println(Arrays.toString(arr));
+            // partition
+            int j = lo , k = hi;
+            while (j < corectIdx && k > corectIdx) {
+                if (arr[j] <= pivot) j++;
+                else if (arr[k] > pivot) k--;
+                else if (arr[j] > pivot && arr[k] <= pivot) {
+                    sweap(arr, j, k);
+                }
+
+            }
+            return corectIdx;
+        }
+
+
+
+
+
+    public static void quickShort(int[] arr, int lo, int hi) {
+        // find pivoit ko shi jagh lana hai
+        if(lo>=hi) return;
+
+       int idx =partion(arr, lo, hi);
+        quickShort(arr, lo, idx - 1);
+        quickShort(arr, idx+1, hi);
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" give me the size");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("give me the array");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        quickShort(arr, 0, n - 1);
+        System.out.println(Arrays.toString(arr));
+
+    }
+}{
+    public static void print(int[] arr) {
+        for (int ele : arr) {
+            System.out.print(ele + " ");
+        }
+        System.out.println();
+    }
+
+    public static void sweap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static int partion(int[] arr, int lo, int hi){
+        int pivot = arr[lo];
+        int smallerCount = 0;
+        for (int i = lo + 1; i <= hi; i++) {
+            if(i== lo) continue;
+            if (arr[i] <=pivot) {
+                smallerCount++;
+            }}
+            int corectIdx = lo + smallerCount;
+            sweap(arr,lo, corectIdx);
+      //  System.out.println(Arrays.toString(arr));
+            // partition
+            int j = lo , k = hi;
+            while (j < corectIdx && k > corectIdx) {
+                if (arr[j] <= pivot) j++;
+                else if (arr[k] > pivot) k--;
+                else if (arr[j] > pivot && arr[k] <= pivot) {
+                    sweap(arr, j, k);
+                }
+
+            }
+            return corectIdx;
+        }
+
+
+
+
+
+    public static void quickShort(int[] arr, int lo, int hi) {
+        // find pivoit ko shi jagh lana hai
+        if(lo>=hi) return;
+
+       int idx =partion(arr, lo, hi);
+        quickShort(arr, lo, idx - 1);
+        quickShort(arr, idx+1, hi);
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" give me the size");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("give me the array");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        quickShort(arr, 0, n - 1);
+        System.out.println(Arrays.toString(arr));
+
+    }
+}
